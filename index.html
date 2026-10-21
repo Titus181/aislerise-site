@@ -4,15 +4,87 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>巷口大店長</title>
+<meta name="description" content="iPhone 上的巷口便利店經營遊戲。擺貨架、招店員、接怪客人，把巷口那間小店經營成大店。">
+<link rel="icon" href="images/icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<main>
-<h1>巷口大店長</h1>
-<p>iPhone 上的巷口便利店經營遊戲。</p>
-<ul>
-<li><a href="privacy.html">隱私權政策</a></li>
-</ul>
+<body class="landing">
+<header class="hero">
+  <div class="hero-sky" aria-hidden="true">
+    <img class="hero-store" src="images/store-wide.jpg" alt="">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text reveal">
+      <img class="hero-icon" src="images/icon.png" alt="巷口大店長 App 圖示" width="96" height="96">
+      <h1>巷口大店長</h1>
+      <p class="lead">巷口那間便利商店，交給你了。</p>
+      <p>擺貨架、招店員、接怪客人，颱風天還有人來搶泡麵。iPhone 上的台灣巷口便利店經營遊戲。</p>
+      <a class="store-button" href="https://apps.apple.com/app/id6822964697">App Store</a>
+    </div>
+    <div class="phone-wrap reveal" aria-hidden="true">
+      <img class="phone" src="images/screen-store.jpg" alt="">
+      <span class="chip chip-coin">+ 營業金</span>
+      <span class="chip chip-heart">♥ 常客</span>
+      <span class="phone-shadow"></span>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-label="遊戲特色">
+  <div class="marquee-track">
+    <span>颱風假搶購</span><i></i><span>統一發票對獎</span><i></i><span>怪客人圖鑑</span><i></i><span>金牌店長</span><i></i><span>常客劇情</span><i></i><span>店貓午睡</span><i></i>
+    <span aria-hidden="true">颱風假搶購</span><i></i><span aria-hidden="true">統一發票對獎</span><i></i><span aria-hidden="true">怪客人圖鑑</span><i></i><span aria-hidden="true">金牌店長</span><i></i><span aria-hidden="true">常客劇情</span><i></i><span aria-hidden="true">店貓午睡</span><i></i>
+  </div>
+</div>
+
+<main class="features">
+  <section class="feature reveal">
+    <img src="images/quirky.jpg" alt="店員在櫃檯幫怪客人影印" loading="lazy">
+    <div>
+      <h2>怪客人上門</h2>
+      <p>要影印、要寄包裹、要繳費，還有人只是想借充電線。專業回答拿全額，好笑回答換一段更好笑的結局。</p>
+    </div>
+  </section>
+  <section class="feature reveal">
+    <img src="images/gift.jpg" alt="常客留在收銀台的禮物" loading="lazy">
+    <div>
+      <h2>常客會記得你</h2>
+      <p>每天來買咖啡的陳先生、常來聊天的林阿嬤，來久了會有話想說，偶爾在收銀台留一份小禮物。</p>
+    </div>
+  </section>
+  <section class="feature reveal">
+    <img src="images/store-wide.jpg" alt="從上方看整間便利商店和巷口" loading="lazy">
+    <div>
+      <h2>你的店，你來擺</h2>
+      <p>貨架、冰箱、咖啡機、關東煮，擺在哪裡由你決定。店越做越大，招牌也一路從木板換成金色燈箱。</p>
+    </div>
+  </section>
 </main>
+
+<footer class="site-footer">
+  <ul>
+    <li><a href="privacy.html">隱私權政策</a></li>
+    <li><a href="https://www.threads.net/@kairo.builds">Threads</a></li>
+    <li><a href="mailto:korosu245@gmail.com">聯絡我們</a></li>
+  </ul>
+  <p class="credit">頁面動態參考 <a href="https://github.com/showheyohtaki/motion-prompt">Motion Prompt</a>（MIT License © 2026 Shohei Ohtaki）</p>
+</footer>
+<script>
+// Motion Prompt #074 (fade-in on scroll) · MIT License (c) 2026 Shohei Ohtaki
+(function () {
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(function (el) { el.classList.add('shown'); });
+    return;
+  }
+  var seen = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('shown'); seen.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  items.forEach(function (el) { seen.observe(el); });
+  // Motion Prompt #073 (parallax scrolling) · MIT License: the store behind the headline moves more slowly.
+  var store = document.querySelector('.hero-store');
+  if (store) addEventListener('scroll', function () { store.style.transform = 'translateY(' + (scrollY * 0.35) + 'px)'; }, { passive: true });
+})();
+</script>
 </body>
 </html>
